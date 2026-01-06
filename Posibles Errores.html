@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error | EduGlobal</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e6f0ff 100%);
+            min-height: 100vh;
+        }
+        
+        .error-card {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            animation: slideUp 0.4s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .error-icon {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .error-item {
+            transition: all 0.3s ease;
+        }
+        
+        .error-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn-error {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-error:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-error:active {
+            transform: translateY(0);
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .blink {
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-6">
+    
+    <!-- Contenedor Principal -->
+    <div class="w-full max-w-4xl mx-auto">
+        
+        <!-- Header con logo -->
+        <header class="text-center mb-8">
+            <div class="flex items-center justify-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg mr-3 shadow-md">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">
+                    <span class="text-blue-600">Edu</span><span class="text-gray-900">Global</span>
+                    <span class="text-sm font-normal text-gray-500 ml-2">Sistema de Gestión de Errores</span>
+                </h1>
+            </div>
+        </header>
+        
+        <!-- Tarjeta de Error Principal -->
+        <div class="error-card bg-white">
+            
+            <!-- Encabezado de la tarjeta -->
+            <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 border-b border-gray-200">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="error-icon w-16 h-16 rounded-full bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center text-red-600 mr-4">
+                            <i class="fas fa-exclamation-triangle text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900">Se han detectado errores</h2>
+                            <p class="text-gray-600">Revisa los siguientes problemas para continuar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2">
+                        <div class="status-indicator bg-red-500 blink"></div>
+                        <span class="text-sm font-medium text-gray-700">Sistema activo</span>
+                        <div class="ml-4 px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
+                            <i class="fas fa-clock mr-1"></i>
+                            <span id="current-time">--:--:--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contenido Principal -->
+            <div class="p-6 md:p-8">
+                
+                <!-- Resumen de errores -->
+                <div class="mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 mr-3">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Errores críticos</p>
+                                    <p class="text-2xl font-bold text-red-700">3</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-3">
+                                    <i class="fas fa-exclamation"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Advertencias</p>
+                                    <p class="text-2xl font-bold text-yellow-700">5</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Informativos</p>
+                                    <p class="text-2xl font-bold text-blue-700">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Barra de búsqueda y filtros -->
+                    <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                        <div class="relative w-full md:w-auto mb-4 md:mb-0">
+                            <input type="text" id="search-errors" placeholder="Buscar errores..." 
+                                   class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full md:w-64">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button id="filter-critical" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition font-medium">
+                                <i class="fas fa-exclamation-circle mr-2"></i>Críticos
+                            </button>
+                            <button id="filter-warning" class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg hover:bg-yellow-200 transition font-medium">
+                                <i class="fas fa-exclamation mr-2"></i>Advertencias
+                            </button>
+                            <button id="filter-all" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition font-medium">
+                                <i class="fas fa-list mr-2"></i>Todos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lista de errores -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Errores detectados</h3>
+                    
+                    <div id="errors-list" class="space-y-4">
+                        <!-- Error Crítico -->
+                        <div class="error-item bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-start">
+                                    <div class="mt-1">
+                                        <i class="fas fa-exclamation-circle text-red-500 mr-3 text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Error de conexión a base de datos</h4>
+                                        <p class="text-gray-600 mt-1">No se puede establecer conexión con el servidor de base de datos PostgreSQL. Verifica que el servicio esté corriendo y las credenciales sean correctas.</p>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-red-100 text-red-800 text-xs font-medium rounded">Código: DB-001</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Módulo: Base de datos</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Hace 5 minutos</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="px-3 py-1 bg-red-500 text-white text-sm font-medium rounded-full">CRÍTICO</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex space-x-3">
+                                <button class="btn-error px-4 py-2 bg-red-600 text-white rounded-lg font-medium text-sm hover:bg-red-700">
+                                    <i class="fas fa-redo mr-2"></i>Reintentar conexión
+                                </button>
+                                <button class="btn-error px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium text-sm hover:bg-gray-300">
+                                    <i class="fas fa-info-circle mr-2"></i>Ver detalles
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Error Crítico -->
+                        <div class="error-item bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-start">
+                                    <div class="mt-1">
+                                        <i class="fas fa-exclamation-circle text-red-500 mr-3 text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Servicio de autenticación no disponible</h4>
+                                        <p class="text-gray-600 mt-1">El servicio de autenticación ha superado el tiempo de espera. Los usuarios no pueden iniciar sesión en este momento.</p>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-red-100 text-red-800 text-xs font-medium rounded">Código: AUTH-003</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Módulo: Autenticación</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Hace 12 minutos</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="px-3 py-1 bg-red-500 text-white text-sm font-medium rounded-full">CRÍTICO</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex space-x-3">
+                                <button class="btn-error px-4 py-2 bg-red-600 text-white rounded-lg font-medium text-sm hover:bg-red-700">
+                                    <i class="fas fa-redo mr-2"></i>Reiniciar servicio
+                                </button>
+                                <button class="btn-error px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium text-sm hover:bg-gray-300">
+                                    <i class="fas fa-info-circle mr-2"></i>Ver detalles
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Advertencia -->
+                        <div class="error-item bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-start">
+                                    <div class="mt-1">
+                                        <i class="fas fa-exclamation text-yellow-500 mr-3 text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Espacio en disco insuficiente</h4>
+                                        <p class="text-gray-600 mt-1">El disco del servidor tiene menos del 10% de espacio disponible. Considera liberar espacio o ampliar la capacidad.</p>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded">Código: SYS-007</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Módulo: Sistema</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Hace 1 hora</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="px-3 py-1 bg-yellow-500 text-white text-sm font-medium rounded-full">ADVERTENCIA</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex space-x-3">
+                                <button class="btn-error px-4 py-2 bg-yellow-600 text-white rounded-lg font-medium text-sm hover:bg-yellow-700">
+                                    <i class="fas fa-trash mr-2"></i>Limpiar archivos temporales
+                                </button>
+                                <button class="btn-error px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium text-sm hover:bg-gray-300">
+                                    <i class="fas fa-chart-pie mr-2"></i>Ver uso de disco
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Advertencia -->
+                        <div class="error-item bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-start">
+                                    <div class="mt-1">
+                                        <i class="fas fa-exclamation text-yellow-500 mr-3 text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Alto uso de memoria RAM</h4>
+                                        <p class="text-gray-600 mt-1">El consumo de memoria RAM ha superado el 85%. Esto podría afectar el rendimiento del sistema.</p>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded">Código: SYS-012</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Módulo: Sistema</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Hace 2 horas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="px-3 py-1 bg-yellow-500 text-white text-sm font-medium rounded-full">ADVERTENCIA</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex space-x-3">
+                                <button class="btn-error px-4 py-2 bg-yellow-600 text-white rounded-lg font-medium text-sm hover:bg-yellow-700">
+                                    <i class="fas fa-memory mr-2"></i>Optimizar memoria
+                                </button>
+                                <button class="btn-error px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium text-sm hover:bg-gray-300">
+                                    <i class="fas fa-info-circle mr-2"></i>Ver detalles
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Informativo -->
+                        <div class="error-item bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-start">
+                                    <div class="mt-1">
+                                        <i class="fas fa-info-circle text-blue-500 mr-3 text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Actualización de seguridad disponible</h4>
+                                        <p class="text-gray-600 mt-1">Hay una nueva actualización de seguridad para el sistema. Se recomienda aplicarla durante el próximo mantenimiento programado.</p>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded">Código: SYS-025</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Módulo: Actualizaciones</span>
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded">Hace 1 día</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="px-3 py-1 bg-blue-500 text-white text-sm font-medium rounded-full">INFORMATIVO</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex space-x-3">
+                                <button class="btn-error px-4 py-2 bg-blue-600 text-white rounded-lg font-medium text-sm hover:bg-blue-700">
+                                    <i class="fas fa-download mr-2"></i>Descargar actualización
+                                </button>
+                                <button class="btn-error px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium text-sm hover:bg-gray-300">
+                                    <i class="fas fa-newspaper mr-2"></i>Ver notas de versión
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Panel de acciones -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Acciones del sistema</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900">Reinicio del sistema</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Reinicia todos los servicios para aplicar cambios y limpiar caché.</p>
+                            <button id="restart-system" class="w-full py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
+                                Reiniciar servicios
+                            </button>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-3">
+                                    <i class="fas fa-file-export"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900">Exportar reporte</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Genera un reporte detallado de todos los errores para análisis.</p>
+                            <button id="export-report" class="w-full py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition">
+                                Exportar a PDF
+                            </button>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 mr-3">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900">Configuración</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Ajusta las preferencias del sistema de notificación de errores.</p>
+                            <button id="open-settings" class="w-full py-2 bg-gray-600 text-white rounded-lg font-medium hover:bg-gray-700 transition">
+                                Abrir configuración
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pie de página -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div class="mb-4 md:mb-0">
+                            <p class="text-gray-600 text-sm">
+                                <i class="fas fa-shield-alt text-blue-500 mr-2"></i>
+                                Sistema de monitoreo de errores - EduGlobal v2.1.4
+                            </p>
+                            <p class="text-gray-500 text-xs mt-1">
+                                Última verificación: <span id="last-check">--:--:--</span>
+                            </p>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <button id="dismiss-all" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium hover:bg-gray-300 transition">
+                                <i class="fas fa-check-circle mr-2"></i>Marcar todos como leídos
+                            </button>
+                            <button id="refresh-errors" class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
+                                <i class="fas fa-redo mr-2"></i>Actualizar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notificación flotante (simulada) -->
+        <div id="notification" class="fixed bottom-4 right-4 bg-gray-900 text-white p-4 rounded-lg shadow-xl max-w-sm hidden">
+            <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-400 mr-3 text-lg"></i>
+                <div>
+                    <p class="font-medium" id="notification-text">Acción completada exitosamente</p>
+                </div>
+                <button id="close-notification" class="ml-4 text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para funcionalidad -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Actualizar hora actual
+            function updateTime() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('es-ES', { hour12: false });
+                document.getElementById('current-time').textContent = timeString;
+                
+                // Actualizar última verificación cada 30 segundos
+                if (now.getSeconds() % 30 === 0) {
+                    document.getElementById('last-check').textContent = timeString;
+                }
+            }
+            
+            // Inicializar hora
+            updateTime();
+            setInterval(updateTime, 1000);
+            
+            // Filtrar errores por tipo
+            document.getElementById('filter-critical').addEventListener('click', function() {
+                filterErrors('critical');
+            });
+            
+            document.getElementById('filter-warning').addEventListener('click', function() {
+                filterErrors('warning');
+            });
+            
+            document.getElementById('filter-all').addEventListener('click', function() {
+                filterErrors('all');
+            });
+            
+            function filterErrors(type) {
+                const errorItems = document.querySelectorAll('.error-item');
+                
+                errorItems.forEach(item => {
+                    if (type === 'all') {
+                        item.style.display = 'block';
+                    } else if (type === 'critical') {
+                        if (item.classList.contains('bg-red-50')) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    } else if (type === 'warning') {
+                        if (item.classList.contains('bg-yellow-50')) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+                
+                // Actualizar contadores
+                updateCounters();
+            }
+            
+            // Actualizar contadores
+            function updateCounters() {
+                // Esta función actualizaría los contadores de errores después de filtrar
+                // Por simplicidad, solo mostramos un mensaje de notificación
+                showNotification('Filtro aplicado correctamente');
+            }
+            
+            // Búsqueda de errores
+            document.getElementById('search-errors').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const errorItems = document.querySelectorAll('.error-item');
+                
+                errorItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Acciones de botones
+            document.getElementById('restart-system').addEventListener('click', function() {
+                if (confirm('¿Estás seguro de que quieres reiniciar todos los servicios del sistema? Esto podría interrumpir operaciones en curso.')) {
+                    showNotification('Reiniciando servicios del sistema...', 'warning');
+                    
+                    // Simulación de reinicio
+                    setTimeout(() => {
+                        showNotification('Servicios reiniciados correctamente');
+                    }, 2000);
+                }
+            });
+            
+            document.getElementById('export-report').addEventListener('click', function() {
+                showNotification('Generando reporte de errores en formato PDF...');
+                
+                // Simulación de generación de PDF
+                setTimeout(() => {
+                    showNotification('Reporte generado exitosamente. Descargando...', 'success');
+                    
+                    // Simulación de descarga
+                    setTimeout(() => {
+                        showNotification('Reporte descargado correctamente', 'success');
+                    }, 1500);
+                }, 1500);
+            });
+            
+            document.getElementById('open-settings').addEventListener('click', function() {
+                showNotification('Abriendo configuración del sistema...');
+                
+                // En una implementación real, esto abriría un modal o redirigiría
+                setTimeout(() => {
+                    showNotification('Panel de configuración cargado', 'info');
+                }, 1000);
+            });
+            
+            document.getElementById('dismiss-all').addEventListener('click', function() {
+                if (confirm('¿Marcar todos los errores como leídos? Esto los ocultará de la vista principal.')) {
+                    showNotification('Marcando todos los errores como leídos...');
+                    
+                    // Simulación de acción
+                    setTimeout(() => {
+                        showNotification('Todos los errores han sido marcados como leídos', 'success');
+                        
+                        // Ocultar errores (simulación)
+                        const errorItems = document.querySelectorAll('.error-item');
+                        errorItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.style.opacity = '0.5';
+                            }, index * 100);
+                        });
+                    }, 1000);
+                }
+            });
+            
+            document.getElementById('refresh-errors').addEventListener('click', function() {
+                // Cambiar texto del botón temporalmente
+                const button = this;
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Actualizando...';
+                button.disabled = true;
+                
+                showNotification('Buscando nuevos errores en el sistema...');
+                
+                // Simulación de actualización
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    
+                    // Mostrar mensaje aleatorio de simulación
+                    const messages = [
+                        'No se encontraron nuevos errores',
+                        'Se encontraron 2 nuevas advertencias',
+                        'Sistema operando normalmente'
+                    ];
+                    
+                    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                    showNotification(randomMessage, 'info');
+                    
+                    // Actualizar última verificación
+                    const now = new Date();
+                    document.getElementById('last-check').textContent = now.toLocaleTimeString('es-ES', { hour12: false });
+                }, 1500);
+            });
+            
+            // Botones de acción en cada error
+            document.querySelectorAll('.btn-error').forEach(button => {
+                button.addEventListener('click', function() {
+                    const actionText = this.textContent.trim();
+                    showNotification(`Ejecutando acción: ${actionText}`, 'info');
+                });
+            });
+            
+            // Mostrar notificación
+            function showNotification(message, type = 'info') {
+                const notification = document.getElementById('notification');
+                const notificationText = document.getElementById('notification-text');
+                
+                // Cambiar color según tipo
+                notification.className = 'fixed bottom-4 right-4 p-4 rounded-lg shadow-xl max-w-sm';
+                
+                if (type === 'success') {
+                    notification.classList.add('bg-green-600', 'text-white');
+                } else if (type === 'warning') {
+                    notification.classList.add('bg-yellow-600', 'text-white');
+                } else if (type === 'error') {
+                    notification.classList.add('bg-red-600', 'text-white');
+                } else {
+                    notification.classList.add('bg-gray-900', 'text-white');
+                }
+                
+                notificationText.textContent = message;
+                notification.classList.remove('hidden');
+                
+                // Auto-ocultar después de 4 segundos
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 4000);
+            }
+            
+            // Cerrar notificación manualmente
+            document.getElementById('close-notification').addEventListener('click', function() {
+                document.getElementById('notification').classList.add('hidden');
+            });
+            
+            // Inicializar última verificación
+            const now = new Date();
+            document.getElementById('last-check').textContent = now.toLocaleTimeString('es-ES', { hour12: false });
+        });
+    </script>
+</body>
+</html>

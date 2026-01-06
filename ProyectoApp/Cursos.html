@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - EduGlobal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+        }
+        .curso-card {
+            transition: all 0.3s ease;
+            border-radius: 20px;
+        }
+        .curso-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .boton-curso {
+            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            transition: all 0.3s ease;
+        }
+        .boton-curso:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+        }
+        .fondo-header {
+            background: linear-gradient(to right, #4776E6, #8E54E9);
+        }
+        .tag-curso {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .tag-gratis {
+            background-color: #4ade80;
+            color: #064e3b;
+        }
+        .tag-ia {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .tag-nuevo {
+            background-color: #f59e0b;
+            color: white;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #8b5cf6, #3b82f6);
+        }
+        .rating-stars {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header simple -->
+    <header class="fondo-header text-white py-4 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="bg-white text-purple-700 p-2 rounded-lg">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">EduGlobal</h1>
+                        <p class="text-sm opacity-80">Aprendé lo que te gusta</p>
+                    </div>
+                </div>
+                
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="hover:text-yellow-300">
+                        <i class="fas fa-home mr-1"></i> Inicio
+                    </a>
+                    <a href="cursos.html" class="font-bold text-yellow-300">
+                        <i class="fas fa-book mr-1"></i> Cursos
+                    </a>
+                    <a href="#" class="hover:text-yellow-300">
+                        <i class="fas fa-user mr-1"></i> Mi Perfil
+                    </a>
+                </nav>
+                
+               <div class="flex items-center space-x-4">
+    
+                <a href="login.html" class="bg-white text-purple-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 flex items-center">
+                <i class="fas fa-sign-in-alt mr-2"></i> Entrar
+                </a>
+
+                <a href="registro.html" class="hidden md:block bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-yellow-300">
+                    Registrarse
+                 </a>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección principal de cursos -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Título y descripción -->
+        <div class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                <i class="fas fa-robot text-purple-600"></i> Cursos de Inteligencia Artificial
+            </h1>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                2 cursos de IA para entender cómo usarla en tu vida diaria y por qué no tienes que tenerle miedo.
+            </p>
+           
+        </div>
+
+        <!-- Mensaje especial -->
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-purple-500 p-6 rounded-lg mb-10">
+            <div class="flex items-center">
+                <div class="bg-purple-100 p-3 rounded-full mr-4">
+                    <i class="fas fa-lightbulb text-purple-600 text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">¡Mirá esto!</h3>
+                    <p class="text-gray-700">
+                        Estos dos cursos son re importantes para poder entender cómo funciona la IA de verdad. 
+                        No te dejes engañar por lo que dice la gente en internet. ¡Aprendé con nosotros!
+                        No supe organizar los cuadros xd
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de cursos -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Curso 1: IA como herramienta profesional -->
+            <div class="curso-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+                <!-- Encabezado del curso -->
+                <div class="relative">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-tools text-white text-6xl mb-4"></i>
+                            <h3 class="text-2xl font-bold text-white">Curso 1</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Badges -->
+                    <div class="absolute top-4 left-4">
+                        <span class="tag-curso tag-gratis">Gratis</span>
+                    </div>
+                    
+                </div>
+                
+                <!-- Contenido del curso -->
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-robot text-blue-500 mr-2"></i>
+                        IA: Tu Nuevo Compañero de Trabajo
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-6">
+                        ¿Te da miedo la IA? ¡No debería! En este curso te mostramos que la Inteligencia Artificial 
+                        es solo una herramienta más, como un martillo o una computadora. Aprendé a usarla para hacer 
+                        tu trabajo más fácil sin reemplazarte.
+                    </p>
+                    
+                    <!-- Detalles del curso -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-clock text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Duración</p>
+                                <p class="font-bold text-gray-800">4 horas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-purple-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-signal text-purple-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Nivel</p>
+                                <p class="font-bold text-gray-800">Principiante</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-green-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-users text-green-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Estudiantes</p>
+                                <p class="font-bold text-gray-800">(valor base de datos)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-yellow-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-star text-yellow-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Calificación</p>
+                                <div class="flex">
+                                    <span class="rating-stars">N/A</span>
+                                    <span class="ml-1 text-gray-800 font-bold">N/A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lo que vas a aprender -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-3">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            ¿Qué vas a aprender?
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Por qué la IA no te va a robar el trabajo</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Trucos para usar ChatGPT sin hacer trampa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Cómo la IA puede ayudarte en tu día a día</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Herramientas gratis que podés usar ya mismo</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Barra de progreso (simulada) -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 font-medium">Tu progreso</span>
+                            <span class="text-gray-700 font-bold">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón de acción -->
+                      
+                        <a href="Mensaje.html" class="boton-curso w-full text-white font-bold py-3 rounded-lg text-lg"><!--Tampoco se que ponerle al class xd--> Empezar Curso Gratis
+                        </a>
+                </div> <!--boton-curso w-full text-white font-bold py-3 rounded-lg text-lg"-->
+            </div>
+
+            <!-- Curso 2: Detectores de IA -->
+            <div class="curso-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+                <!-- Encabezado del curso -->
+                <div class="relative">
+                    <div class="h-48 bg-gradient-to-r from-red-500 to-orange-400 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-chart-bar text-white text-6xl mb-4"></i>
+                            <h3 class="text-2xl font-bold text-white">Curso 2</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Badges -->
+                    <div class="absolute top-4 left-4">
+                        <span class="tag-curso tag-gratis">Gratis</span>
+                    </div>
+                   
+                </div>
+                
+                <!-- Contenido del curso -->
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-search text-red-500 mr-2"></i>
+                        Detectores de IA: ¿Funcionan o son un Fraude?
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-6">
+                        ¿Tu profe usa un detector de IA para revisar tus trabajos? En este curso te explicamos 
+                        por qué esos programas NO sirven. Aprendé cómo funcionan realmente y por qué fallan 
+                        tan seguido. 
+                    </p>
+                    
+                    <!-- Detalles del curso -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-clock text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Duración</p>
+                                <p class="font-bold text-gray-800">3 horas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-purple-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-signal text-purple-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Nivel</p>
+                                <p class="font-bold text-gray-800">Fácil</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-green-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-users text-green-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Estudiantes</p>
+                                <p class="font-bold text-gray-800">(valor base de datos)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-yellow-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-star text-yellow-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Calificación</p>
+                                <div class="flex">
+                                    <span class="rating-stars">N/A</span>
+                                    <span class="ml-1 text-gray-800 font-bold">N/A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lo que vas a aprender -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-3">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            ¿Qué vas a aprender?
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Cómo funcionan los detectores de IA (o al menos lo intentan)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Por qué detectan textos humanos como "hechos por IA"</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Casos reales de fallos garrafales de estos detectores</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Cómo defenderte si te acusan injustamente de usar IA</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Barra de progreso (simulada) -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 font-medium">Tu progreso</span>
+                            <span class="text-gray-700 font-bold">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón de acción -->
+                    <a href="Cursos/DetectoresIA.html" class="boton-curso w-full text-white font-bold py-3 rounded-lg text-lg block text-center">
+                          Empezar Curso Gratis
+                            </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonio gracioso -->
+        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-2xl p-6 mb-10">
+            <div class="text-center">
+                <i class="fas fa-comment-dots text-4xl text-yellow-500 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Lo que dicen los estudiantes</h3>
+                
+                
+
+       
+
+        <!-- Llamada a la acción final -->
+        <div class="text-center bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-2xl p-8 shadow-xl">
+            <h2 class="text-3xl font-bold mb-4">¿Qué estás esperando?</h2>
+            <p class="text-xl mb-6">Más de (base de datos) personas ya aprendieron sobre IA con estos cursos. ¡No te quedes afuera!</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="Registro.html" class="bg-white text-purple-700 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 text-lg">
+                     Crear Cuenta Gratis
+                </a>
+                <a href="Mensaje.html" class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white hover:text-purple-700 text-lg">
+                    Ver Demo
+                </a>
+            </div>
+            
+            <p class="mt-6 opacity-80">
+                <i class="fas fa-shield-alt mr-2"></i> 100% seguro • Sin spam • Sin compromiso
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer simple -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex justify-center items-center mb-6">
+                    <div class="bg-white text-purple-700 p-2 rounded-lg mr-3">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold">EduGlobal</h2>
+                </div>
+                
+                <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                    Aprendé lo que te gusta, cuando quieras, desde donde quieras. Cursos gratis para todas las edades.
+                </p>
+                
+                
+                <div class="text-gray-500 text-sm">
+                    <p>Aqui deberia ir derechos reservados (creo XD).</p>
+                    <p class="mt-2">Hecho con <i class="fas fa-heart text-red-500"></i> para gente que quiere aprender sin aburrirse.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript simple -->
+    <script>
+        // Efecto en botones de curso
+      
+                // Simular progreso
+                const progressBar = this.closest('.curso-card').querySelector('.progress-fill');
+                const progressText = this.closest('.curso-card').querySelector('.progress-bar + div span:last-child');
+                
+                progressBar.style.width = '10%';
+                progressText.textContent = '10%';
+           
+        
+        
+        
+        // Efecto en cards al pasar el mouse
+        document.querySelectorAll('.curso-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.05)';
+            });
+        });
+        
+        // Mensaje de bienvenida
+        window.addEventListener('load', function() {
+            console.log('¡Bienvenido a la página de cursos de EduGlobal!');
+            console.log('Recordá que estos cursos son 100% gratis y podés hacerlos a tu ritmo.');
+        });
+    </script>
+</body>
+</html>
