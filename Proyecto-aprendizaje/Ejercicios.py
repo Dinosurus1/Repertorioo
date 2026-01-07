@@ -1,3 +1,6 @@
+
+
+
 frase = input("Dime una frase y calculo cuanto tardarias en decirla")
 # separa la frase en palabras y las guarda en una lista
 palabras_separadas = frase.split(" ")
@@ -14,3 +17,6 @@ if cantidad_de_palabras > 120:
     print("Eres un robot")
 else:
     print("Eres humano")
+
+
+
