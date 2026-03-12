@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detectores de IA - EduGlobal</title>
+    <!-- Tailwind CDN rápido -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .curso-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .btn-volver {
+            background: #4f46e5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        .btn-volver:hover {
+            background: #4338ca;
+            transform: translateX(-5px);
+        }
+        .seccion-curso {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4f46e5;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .badge-gratis {
+            background: #10b981;
+            color: white;
+        }
+        .badge-popular {
+            background: #f59e0b;
+            color: white;
+        }
+        .progreso-bar {
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progreso-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            width: 25%;
+        }
+        .chip {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #4f46e5;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .contenido-leccion {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="py-10">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Encabezado simple -->
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-3xl font-bold text-white">
+                    <i class="fas fa-graduation-cap mr-2"></i>
+                    EduGlobal
+                </h1>
+                <p class="text-white opacity-80">Curso rápido sobre IA</p>
+            </div>
+            <a href="/ProyectoApp/Cursos.html" class="btn-volver">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Volver a Cursos
+            </a>
+        </div>
+
+        <!-- Contenedor principal del curso -->
+        <div class="curso-container p-8">
+            <!-- Título y badges -->
+            <div class="flex flex-wrap items-center justify-between mb-6">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                        <i class="fas fa-search text-red-500 mr-3"></i>
+                        Detectores de IA: ¿Sirven o No?
+                    </h1>
+                    <p class="text-gray-600 text-lg">
+                        Un curso rápido para entender por qué los detectores de IA fallan más de lo que aciertan
+                    </p>
+                </div>
+                
+            </div>
+
+            <!-- Barra de progreso -->
+            <div class="mb-8">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-700 font-medium">Tu progreso en este curso</span>
+                    <span class="text-gray-700 font-bold">(no se como hacer que avance)</span>
+                </div>
+                <div class="progreso-bar">
+                    <div class="progreso-fill"></div>
+                </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="mb-8">
+                <span class="chip"><i class="fas fa-clock mr-1"></i> 3 horas</span>
+                <span class="chip"><i class="fas fa-signal mr-1"></i> Fácil</span>
+                <span class="chip"><i class="fas fa-users mr-1"></i> (Base de datos)</span>
+                <span class="chip"><i class="fas fa-star mr-1"></i> N/A</span>
+            </div>
+
+            <!-- Introducción rápida -->
+            <div class="seccion-curso mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-play-circle text-blue-500 mr-2"></i>
+                    ¿De qué va este curso?
+                </h2>
+                <p class="text-gray-700 mb-4">
+                    ¿Alguna vez usaste un detector de IA y te dijo que tu texto escrito por humanos era hecho por IA? 
+                    ¿O al revés? En este curso te explicamos por qué pasa eso.
+                </p>
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <p class="text-blue-800">
+                        <i class="fas fa-lightbulb text-blue-500 mr-2"></i>
+                        <strong>Dato clave:</strong> Los detectores de IA no "ven" si algo es IA, solo adivinan basándose en patrones estadísticos. Y a veces se equivocan. Mucho.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Lecciones del curso -->
+            <div class="mb-10">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                    <i class="fas fa-list-ol text-purple-500 mr-2"></i>
+                    Lecciones del curso
+                </h2>
+                
+                <div class="space-y-4">
+
+    <div>
+        <button onclick="toggleLeccion('contenido-leccion-1')" class="w-full flex items-center bg-gray-100 p-4 rounded-lg border hover:bg-gray-200 transition duration-150 text-left">
+            <div class="bg-gray-400 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">1</div>
+            <div class="flex-1">
+                <h3 class="font-bold text-gray-800">¿Cómo funcionan los detectores de IA?</h3>
+                <p class="text-gray-600 text-sm">(O al menos, lo intentan)</p>
+            </div>
+            <div class="text-gray-400">
+                <i class="fas fa-lock text-xl"></i>
+            </div>
+        </button>
+
+        <div id="contenido-leccion-1" class="hidden p-6 bg-white border border-t-0 rounded-b-lg shadow-inner">
+            <p class="text-gray-700">
+                Contenido de la Lección 1: Los detectores de IA funcionan analizando la perplejidad y el estallido (burstiness) del texto. Buscan patrones de palabras que son predecibles y gramaticalmente perfectos, algo característico de los modelos de lenguaje. Cuanto menos "sorprendente" es una frase, más probable es que sea generada por IA.
+            </p>
+            <p class="mt-3 text-sm text-purple-600">
+                <a href="#">Ver video de esta lección</a>
+            </p>
+        </div>
+    </div>
+    
+    <div>
+        <button onclick="toggleLeccion('contenido-leccion-2')" class="w-full flex items-center bg-gray-100 p-4 rounded-lg border-2 hover:bg-gray-200 transition duration-150 text-left">
+            <div class="bg-gray-400 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">2</div>
+            <div class="flex-1">
+                <h3 class="font-bold text-gray-800">Patrones estadísticos vs. Inteligencia real</h3>
+                <p class="text-gray-400 text-sm">(Spoiler: solo son estadísticas)</p>
+            </div>
+            <div class="text-gray-400">
+                <i class="fas fa-lock text-xl"></i>
+            </div>
+        </button>
+
+        <div id="contenido-leccion-2" class="hidden p-6 bg-white border border-t-0 rounded-b-lg shadow-inner">
+            <p class="text-gray-700">
+                Contenido de la Lección 2: Es fundamental entender que la IA generativa no "piensa". Simplemente calcula la siguiente palabra más probable en una secuencia, basándose en miles de millones de ejemplos. Su "inteligencia" es puramente una habilidad estadística para predecir el texto.
+            </p>
+        </div>
+    </div>
+    
+
+    <div>
+        <button onclick="toggleLeccion('contenido-leccion-3')" class="w-full flex items-center bg-gray-100 p-4 rounded-lg border hover:bg-gray-200 transition duration-150 text-left">
+            <div class="bg-gray-400 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">3</div>
+            <div class="flex-1">
+                <h3 class="font-bold text-gray-800">Pruebas contundentes de porque no funcionan</h3>
+                <p class="text-gray-600 text-sm">Interesante</p>
+            </div>
+            <div class="text-gray-400">
+                <i class="fas fa-lock text-xl"></i>
+            </div>
+        </button>
+
+        <div id="contenido-leccion-3" class="hidden p-6 bg-white border border-t-0 rounded-b-lg shadow-inner">
+            <p class="text-gray-700">
+                Contenido de la Lección 3: Estudios han demostrado que los detectores de IA pueden ser engañados fácilmente. Por ejemplo, al parafrasear texto generado por IA o al introducir errores tipográficos, la precisión de estos detectores cae drásticamente. Además, textos escritos por humanos a veces son etiquetados incorrectamente como generados por IA, lo que resalta sus limitaciones.
+                Otro gran ejemplo es poner la constitución de un país en un detector de IA, y que este diga que fue escrita por IA, cuando obviamente fue escrita por humanos hace décadas o siglos. Esto demuestra que los detectores no entienden el contenido, solo buscan patrones estadísticos. Por eso hay que enseñar a los estudiantes a usar la IA y no acusarlos satanizando la IA
+                <img src="Constitucion_politicaIA.jpg" width="400" alt="Constitución política">
+                Aqui podemos ver la constitución política de Colombia, escrita en 1991 por humanos, siendo analizada por un detector de IA y siendo clasificada como "escrito por IA". Esto demuestra claramente las limitaciones y fallos de estos detectores.
+            </p>
+        </div>
+    </div>
+
+            <!-- Test rápido -->
+            <div class="seccion-curso">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-question-circle text-green-500 mr-2"></i>
+                    Test rápido (opcional)
+                </h2>
+                <p class="text-gray-700 mb-6">Veamos si entendiste lo básico:</p>
+                
+                <div class="mb-6">
+                    <p class="font-medium text-gray-800 mb-4">1. Los detectores de IA funcionan principalmente usando:</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50" onclick="seleccionarRespuesta(this)">
+                            <div class="w-6 h-6 border border-gray-400 rounded-full mr-3"></div>
+                            <span>Inteligencia artificial avanzada</span>
+                        </div>
+                        <div class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50" onclick="seleccionarRespuesta(this, true)">
+                            <div class="w-6 h-6 border border-gray-400 rounded-full mr-3"></div>
+                            <span>Patrones estadísticos simples</span>
+                        </div>
+                        <div class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50" onclick="seleccionarRespuesta(this)">
+                            <div class="w-6 h-6 border border-gray-400 rounded-full mr-3"></div>
+                            <span>Magia y suerte</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="verRespuesta()" class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600">
+                    <i class="fas fa-check mr-2"></i> Ver si acerté
+                </button>
+            </div>
+
+           
+
+        <!-- Footer simple -->
+        <div class="text-center mt-8 text-white opacity-80">
+            <p>No se</p>
+            <p class="text-sm mt-2"> no es un curso real (pero la info sí es real)</p>
+        </div>
+    </div>
+
+    <script>
+        // Funciones simples para la navegación
+        function anteriorLeccion() {
+            alert("¡Buena idea repasar! Te llevaríamos a la lección anterior.");
+        }
+        
+        function siguienteLeccion() {
+            alert("¡Excelente! Pasando a la siguiente lección...");
+            // Simular aumento de progreso
+            const progresoFill = document.querySelector('.progreso-fill');
+            const progresoText = document.querySelector('.progreso-bar + div span:last-child');
+            
+            const widthActual = parseInt(progresoFill.style.width) || 25;
+            const nuevoWidth = Math.min(widthActual + 25, 100);
+            
+            progresoFill.style.width = nuevoWidth + '%';
+            progresoText.textContent = nuevoWidth + '%';
+            
+            if (nuevoWidth === 100) {
+                alert("¡Felicidades! Completaste el curso. Buen trabajo.");
+            }
+        }
+        
+        // Para el test
+        function seleccionarRespuesta(elemento, esCorrecta = false) {
+            // Resetear todas las selecciones
+            document.querySelectorAll('[onclick*="seleccionarRespuesta"]').forEach(el => {
+                el.style.backgroundColor = '';
+                el.style.borderColor = '#d1d5db';
+                const circle = el.querySelector('div');
+                circle.innerHTML = '';
+                circle.style.borderColor = '#9ca3af';
+            });
+            
+            // Marcar la seleccionada
+            elemento.style.backgroundColor = esCorrecta ? '#d1fae5' : '#fef2f2';
+            elemento.style.borderColor = esCorrecta ? '#10b981' : '#ef4444';
+            
+            const circle = elemento.querySelector('div');
+            circle.style.borderColor = esCorrecta ? '#10b981' : '#ef4444';
+            
+            circle.innerHTML = esCorrecta ? 
+                '<i class="fas fa-check text-white text-xs"></i>' : 
+                '<i class="fas fa-times text-white text-xs"></i>';
+            circle.style.backgroundColor = esCorrecta ? '#10b981' : '#ef4444';
+            
+            // Guardar si es correcta
+            elemento.dataset.correcta = esCorrecta;
+        }
+        
+        function verRespuesta() {
+            const seleccionada = document.querySelector('[data-correcta]');
+            
+            if (!seleccionada) {
+                alert("Primero seleccioná una respuesta");
+                return;
+            }
+            
+            const esCorrecta = seleccionada.dataset.correcta === 'true';
+            
+            if (esCorrecta) {
+                alert("¡Correcto! 🎉 Los detectores de IA usan patrones estadísticos, no son realmente 'inteligentes'.");
+            } else {
+                alert("No exactamente. La respuesta correcta es: 'Patrones estadísticos simples'. ¡Probá de nuevo!");
+            }
+        }
+        
+        // Efecto al cargar
+        window.addEventListener('load', function() {
+            console.log("Página del curso cargada. Recordá: los detectores de IA no son perfectos.");
+        });
+    </script>
+    <script>
+    function toggleLeccion(idContenido) {
+        // 1. Obtiene el elemento de contenido (el div con el ID)
+        var contenido = document.getElementById(idContenido);
+
+        // 2. Comprueba si el contenido está visible o no
+        if (contenido.classList.contains('hidden')) {
+            // Si está oculto, lo muestra (remueve la clase 'hidden')
+            contenido.classList.remove('hidden');
+        } else {
+            // Si está visible, lo oculta (agrega la clase 'hidden')
+            contenido.classList.add('hidden');
+        }
+    }
+
+    // Nota: Las funciones 'anteriorLeccion()' y 'siguienteLeccion()' 
+    // en tus botones de navegación también necesitarían ser definidas aquí si no lo están ya.
+</script>
+</body>
+</html>

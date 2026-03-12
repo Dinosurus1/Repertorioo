@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso y Registro - Aprendizaje Único</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind para usar el color principal y la fuente Inter -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#1D4ED8', // Azul profundo
+                        'secondary-teal': '#0D9488', // Verde azulado brillante
+                        'background-light': '#F9FAFB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Estilos base para los paneles */
+        .split-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .split-panel:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Ajustes en los títulos de los paneles */
+        .panel-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        /* Estilos de contenido y formularios */
+        .panel-content {
+    /* Retraso para que el formulario se muestre después del movimiento de la pantalla */
+    transition: opacity 0.5s ease-in-out 0.2s, transform 0.7s ease-in-out; 
+    @apply absolute w-full max-w-md p-4; /* <-- ¡ELIMINA ESTO! */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+        /* Estado Inicial (50/50) */
+        #left-panel, #right-panel {
+            width: 50%;
+            opacity: 1; /* Asegura visibilidad inicial */
+        }
+
+        /* --- ESTADO ACTIVO (EXPANSION A PANTALLA COMPLETA) --- */
+        .active-left #left-panel {
+            width: 100%;
+            cursor: default;
+        }
+        .active-left #right-panel {
+            width: 0%; /* Ocultar completamente */
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .active-right #right-panel {
+            width: 100%;
+            cursor: default;
+        }
+        .active-right #left-panel {
+            width: 0%; /* Ocultar completamente */
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Ocultar/Mostrar formularios y títulos */
+        .form-container {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out, transform 0.35s cubic-bezier(.2,.9,.3,1);
+            margin: 0 auto; /* centra horizontalmente cuando tiene width */
+            transform: translateY(8px) scale(0.99);
+        }
+
+        .form-container input {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-container button {
+            background-color: #1D4ED8;
+            color: #ffffff;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #2563EB;
+        }
+
+        .panel-title {
+            transition: opacity 0.3s, transform 0.5s;
+        }
+
+        .is-active .form-container {
+            opacity: 1;
+            pointer-events: auto;
+            transition-delay: 0.5s; /* Muestra el formulario después de la transición de ancho */
+            transform: translateY(0) scale(1);
+        }
+
+        .is-active .panel-title {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 0.3s, transform 0.5s;
+        }
+        
+        /* Responsive: En móviles, apilar verticalmente */
+        @media (max-width: 768px) {
+            #split-screen {
+                @apply flex-col;
+            }
+            #left-panel, #right-panel {
+                width: 100% !important;
+                height: 50vh;
+            }
+            .active-left #left-panel, .active-right #right-panel {
+                height: 100vh; /* Expande verticalmente en móvil */
+            }
+            .active-left #right-panel, .active-right #left-panel {
+                height: 0vh;
+            }
+            .panel-content {
+                max-width: 90%;
+            }
+        }
+
+        /* Centrar los formularios completamente en el panel */
+        .panel-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .form-container {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="font-sans bg-background-light h-screen overflow-hidden">
+
+    <!-- Contenedor Principal de Pantalla Dividida -->
+    <div id="split-screen" class="flex h-full">
+
+        <!-- Panel Izquierdo: SIGN UP (Experimentar) -->
+        <div id="left-panel" class="split-panel bg-gradient-to-br from-secondary-teal to-teal-700 text-white shadow-2xl" onclick="togglePanel('left')">
+            <div class="panel-content text-center">
+                <!-- Título inicial -->
+                <h1 class="panel-title text-4xl sm:text-5xl font-extrabold mb-8 transition duration-500">
+                    Experimentar un nuevo tipo de aprendizaje único
+                </h1>
+                
+                <!-- Formulario de Sign Up (Inicialmente oculto) -->
+                <div id="signup-form-container" class="form-container bg-white p-6 rounded-xl shadow-2xl text-gray-800">
+                    <h2 class="text-2xl font-bold mb-4 text-secondary-teal">Crea tu Cuenta</h2>
+                    <input type="text" placeholder="Nombre de Usuario" class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-teal">
+                    <input type="email" placeholder="Correo Electrónico" class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-teal">
+                    <input type="password" placeholder="Contraseña" class="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-teal">
+                    <button class="w-full bg-secondary-teal text-white py-3 rounded-xl font-semibold hover:bg-teal-600 transition duration-300 shadow-md">
+                        Registrarse
+                    </button>
+                    <!-- Botón para volver al split screen -->
+                    <button onclick="event.stopPropagation(); resetPanel()" class="w-full mt-4 bg-white text-secondary-teal border border-secondary-teal py-3 rounded-xl font-semibold hover:bg-teal-50 transition duration-300 shadow-md">
+                        ← Volver
+                    </button>
+                    <p class="mt-4 text-sm">¿Ya tienes cuenta? <a href="#" onclick="event.stopPropagation(); togglePanel('right')" class="text-secondary-teal font-medium hover:underline">Continuar Aprendizaje</a></p>
+                </div>
+            </div>
+            <!-- Indicador de acción en móvil/al hacer clic -->
+            <button id="left-click-hint" class="absolute bottom-4 p-2 bg-white bg-opacity-20 text-white rounded-full transition-opacity duration-300 md:hidden">
+                Toca para registrarte
+            </button>
+        </div>
+
+        <!-- Panel Derecho: LOGIN (Continuar Aprendizaje) -->
+        <div id="right-panel" class="split-panel bg-gradient-to-br from-primary-blue to-blue-700 text-white shadow-2xl" onclick="togglePanel('right')">
+            <div class="panel-content text-center">
+                <!-- Título inicial -->
+                <h1 class="panel-title text-4xl sm:text-5xl font-extrabold mb-8 transition duration-500">
+                    Continuar aprendizaje
+                </h1>
+
+                <!-- Formulario de Login (Inicialmente oculto) -->
+                <div id="login-form-container" class="form-container bg-white p-6 rounded-xl shadow-2xl text-gray-800">
+                    <h2 class="text-2xl font-bold mb-4 text-primary-blue">Iniciar Sesión</h2>
+                    <input type="email" placeholder="Correo Electrónico" class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                    <input type="password" placeholder="Contraseña" class="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                    <button class="w-full bg-primary-blue text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition duration-300 shadow-md">
+                        Ingresar
+                    </button>
+                    <!-- Botón para volver al split screen -->
+                    <button onclick="event.stopPropagation(); resetPanel()" class="w-full mt-4 bg-white text-primary-blue border border-primary-blue py-3 rounded-xl font-semibold hover:bg-blue-50 transition duration-300 shadow-md">
+                        ← Volver
+                    </button>
+                    <p class="mt-4 text-sm">¿Eres nuevo? <a href="#" onclick="event.stopPropagation(); togglePanel('left')" class="text-primary-blue font-medium hover:underline">Experimentar</a></p>
+                </div>
+            </div>
+            <!-- Indicador de acción en móvil/al hacer clic -->
+            <button id="right-click-hint" class="absolute bottom-4 p-2 bg-white bg-opacity-20 text-white rounded-full transition-opacity duration-300 md:hidden">
+                Toca para iniciar sesión
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        const splitScreen = document.getElementById('split-screen');
+        const leftPanel = document.getElementById('left-panel');
+        const rightPanel = document.getElementById('right-panel');
+
+        // Función para restaurar la vista 50/50 y ocultar formularios
+        function resetPanel() {
+            // Elimina las clases de estado activo para restaurar el CSS 50/50
+            splitScreen.classList.remove('active-left');
+            splitScreen.classList.remove('active-right');
+            
+            // Oculta ambos formularios (restaura el estado inicial de la opacidad del contenido)
+            leftPanel.classList.remove('is-active');
+            rightPanel.classList.remove('is-active');
+        }
+
+
+        // Función para manejar el estado de los paneles al hacer clic
+        function togglePanel(side) {
+            // Si el panel ya está activo, lo reseteamos (funciona como un segundo clic para cerrar)
+            if (
+                (side === 'left' && splitScreen.classList.contains('active-left')) ||
+                (side === 'right' && splitScreen.classList.contains('active-right'))
+            ) {
+                resetPanel();
+                return;
+            }
+
+            if (side === 'left') {
+                // 1. Alternar clases de la pantalla principal para la transición de tamaño
+                splitScreen.classList.add('active-left');
+                splitScreen.classList.remove('active-right');
+
+                // 2. Establecer la visibilidad del formulario activo
+                leftPanel.classList.add('is-active');
+                rightPanel.classList.remove('is-active');
+
+            } else if (side === 'right') {
+                // 1. Alternar clases de la pantalla principal para la transición de tamaño
+                splitScreen.classList.add('active-right');
+                splitScreen.classList.remove('active-left');
+                
+                // 2. Establecer la visibilidad del formulario activo
+                rightPanel.classList.add('is-active');
+                leftPanel.classList.remove('is-active');
+            }
+        }
+    </script>
+</body>
+</html>

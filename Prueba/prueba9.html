@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Bienestar Laboral</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* Color de respaldo por si la imagen no carga */
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Nuevo fondo con imagen desenfocada */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://www.medvidasalud.com/wp-content/uploads/las-4-capacitaciones-de-seguridad-y-salud-medvida-salud-ocupacional.webp');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px) brightness(0.4);
+            z-index: -1;
+            transform: scale(1.1); /* Evita bordes blancos por el blur */
+        }
+        
+        .hero-container {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gradient-border-card {
+            border: 1px solid transparent;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)) padding-box,
+                        linear-gradient(120deg, #2dd4bf, #38bdf8) border-box;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-cta {
+            background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+            box-shadow: 0 0 20px rgba(45, 212, 191, 0.6), 0 0 35px rgba(56, 189, 248, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 0 30px rgba(45, 212, 191, 0.8), 0 0 50px rgba(56, 189, 248, 0.6);
+        }
+
+        /* Estilos para las nuevas tarjetas interactivas */
+        .info-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            background-color: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(12px);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            cursor: pointer;
+        }
+        .info-card:hover {
+            transform: scale(1.03);
+            border-color: rgba(45, 212, 191, 0.5);
+        }
+        .info-card .content {
+            transition: opacity 0.4s ease;
+        }
+        .info-card:hover .content {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .info-card .hover-content {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transition-delay: 0.1s;
+            transform: scale(0.95);
+        }
+        .info-card:hover .hover-content {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Animación para la aparición del contenido al hacer scroll */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div class="relative z-10">
+        <!-- SECCIÓN DE BIENVENIDA -->
+        <section class="hero-container">
+            <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+                Donde el <span class="gradient-text">Bienestar</span><br>se Convierte en Productividad.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                La plataforma líder en capacitación de Salud y Seguridad en el Trabajo (SGSST) y Buenas Prácticas (BPM).
+            </p>
+        </section>
+
+        <!-- SECCIÓN DE PILARES -->
+        <section class="py-20 px-6 container mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <!-- Pilar 1 -->
+                <div class="fade-in-up">
+                    <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-teal-400"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Prevención Activa</h3>
+                    <p class="text-gray-400">Capacitaciones interactivas enfocadas en prevenir riesgos y crear un entorno de trabajo seguro.</p>
+                </div>
+                <!-- Pilar 2 -->
+                 <div class="fade-in-up">
+                    <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-sky-400"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Certificación en Normativas</h3>
+                    <p class="text-gray-400">Asegura el cumplimiento de los estándares de la industria con certificados que validan el conocimiento.</p>
+                </div>
+                <!-- Pilar 3 -->
+                 <div class="fade-in-up">
+                    <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-green-400"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Cultura de Cuidado</h3>
+                    <p class="text-gray-400">Fomenta un ambiente laboral donde la salud y el bienestar de cada empleado es la prioridad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- **NUEVA SECCIÓN INTERACTIVA: QUIÉNES SOMOS Y OBJETIVO** -->
+        <section class="py-20 px-6 container mx-auto">
+             <div class="grid md:grid-cols-2 gap-8">
+                 <!-- Card: Quiénes Somos -->
+                 <div class="info-card rounded-2xl p-8 md:p-12 fade-in-up">
+                     <div class="content text-center flex flex-col items-center justify-center h-full">
+                         <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-sky-400"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.512 2.72a3 3 0 01-4.682-2.72M12 18.72V15m0 3.72a9.094 9.094 0 01-3.741-.479 3 3 0 01-4.682-2.72M12 3.75a9.094 9.094 0 013.741.479 3 3 0 014.682 2.72M12 3.75a9.094 9.094 0 00-3.741.479 3 3 0 00-4.682 2.72m7.512 15.47a3 3 0 01-4.682-2.72M3.75 12a9.094 9.094 0 01.479-3.741 3 3 0 012.72-4.682m15.47 7.512a3 3 0 01-2.72 4.682m-15.47-7.512a9.094 9.094 0 00-.479 3.741 3 3 0 002.72 4.682" /></svg>
+                         </div>
+                         <h2 class="text-3xl font-bold mb-2">Quiénes Somos</h2>
+                         <p class="text-gray-400">Pasa el cursor para descubrir</p>
+                     </div>
+                     <div class="hover-content flex flex-col justify-center items-center text-center p-8">
+                         <h3 class="text-2xl font-bold mb-4">Expertos en Bienestar Laboral</h3>
+                         <p class="text-gray-300">Unimos salud ocupacional y tecnología para crear una plataforma que hace la capacitación en seguridad accesible, medible y efectiva, transformando los entornos de trabajo.</p>
+                     </div>
+                 </div>
+
+                 <!-- Card: Nuestro Objetivo -->
+                 <div class="info-card rounded-2xl p-8 md:p-12 fade-in-up">
+                      <div class="content text-center flex flex-col items-center justify-center h-full">
+                         <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-teal-400"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+                         </div>
+                         <h2 class="text-3xl font-bold mb-2">Nuestro Objetivo</h2>
+                         <p class="text-gray-400">Pasa el cursor para descubrir</p>
+                     </div>
+                     <div class="hover-content flex flex-col justify-center items-center text-center p-8">
+                         <h3 class="text-2xl font-bold mb-4">Cero Accidentes, Cien por Ciento Cuidado</h3>
+                         <p class="text-gray-300">Buscamos reducir los accidentes laborales a cero, empoderando a cada trabajador con conocimiento y ofreciendo a las empresas las herramientas para construir una cultura de seguridad inquebrantable.</p>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+
+        <!-- SECCIÓN COLABORADORES -->
+        <section class="py-20 px-6">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center fade-in-up">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">CUIDA TU CARRERA,<br> <span class="gradient-text">PROTEGE TU FUTURO</span></h2>
+                    <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+                        Tu bienestar es tu activo más valioso. Aprende a identificar riesgos, a usar correctamente tu equipo de protección y a actuar en caso de emergencia. Conviértete en un referente de seguridad en tu lugar de trabajo.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center"><span class="text-teal-400 mr-3 font-bold">✓</span> Domina protocolos de seguridad esenciales (SGSST).</li>
+                        <li class="flex items-center"><span class="text-teal-400 mr-3 font-bold">✓</span> Certifícate en Buenas Prácticas de Manufactura (BPM).</li>
+                        <li class="flex items-center"><span class="text-teal-400 mr-3 font-bold">✓</span> Aprende a tu ritmo, desde cualquier dispositivo.</li>
+                    </ul>
+                </div>
+                <div class="gradient-border-card p-4">
+                    <img src="https://th.bing.com/th/id/R.84fba84a677c3fff2f09903984f89fd5?rik=NMpdUWSaUAiEDw&riu=http%3a%2f%2fseisamed.com%2fwp-content%2fuploads%2fComo-garantizar-la-seguridad-de-un-laboratorio-de-alto-riesgo.jpg%3fis-pending-load%3d1&ehk=mqcriEVCqv8ERXgmsfJR5DcyikxqKRMyUt7DDQ5wE0U%3d&risl=&pid=ImgRaw&r=0" class="rounded-lg w-full h-full object-cover" alt="Persona con equipo de seguridad en un laboratorio">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN EMPRESAS -->
+        <section class="py-20 px-6 bg-slate-900/50">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center fade-in-up">
+                <div class="order-2 md:order-1 gradient-border-card p-4">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.hy4eL6UuRTgTPOoyYMiRpgHaEz?rs=1&pid=ImgDetMain&o=7&rm=3" class="rounded-lg w-full h-full object-cover" alt="Equipo de trabajo revisando planes de seguridad">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">CONSTRUYE UN ENTORNO<br> <span class="gradient-text">MÁS SEGURO Y PRODUCTIVO</span></h2>
+                    <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+                        Invertir en seguridad es invertir en el futuro de tu empresa. Reduce el ausentismo, cumple con las normativas vigentes y demuestra a tu equipo que su bienestar es tu prioridad.
+                    </p>
+                     <ul class="space-y-4">
+                        <li class="flex items-center"><span class="text-sky-400 mr-3 font-bold">✓</span> Gestiona y asigna cursos fácilmente.</li>
+                        <li class="flex items-center"><span class="text-sky-400 mr-3 font-bold">✓</span> Obtén reportes detallados y seguimiento en tiempo real.</li>
+                        <li class="flex items-center"><span class="text-sky-400 mr-3 font-bold">✓</span> Capacitación de alto impacto para todo tu equipo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECCIÓN CTA FINAL -->
+        <section class="py-24 text-center px-6 fade-in-up">
+             <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">¿Listo para construir un futuro más seguro?</h2>
+             <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+                Únete a las empresas y profesionales que están llevando la seguridad y el bienestar al siguiente nivel.
+            </p>
+            <button class="btn-cta text-white font-bold py-5 px-16 rounded-full text-2xl">
+                PRUÉBANOS
+            </button>
+        </section>
+    </div>
+
+    <!-- Script para animaciones de scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lógica para animaciones de scroll
+            const scrollElements = document.querySelectorAll('.fade-in-up');
+            const elementInView = (el) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) - 100);
+            };
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+            
+            handleScrollAnimation();
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+    </script>
+</body>
+</html>

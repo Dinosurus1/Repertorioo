@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fábrica de Talentos - Bienvenido</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* Azul noche muy oscuro */
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        .hero-container {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #f97316, #d94e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gradient-border-card {
+            border: 1px solid transparent;
+            background: linear-gradient(#020617, #020617) padding-box,
+                        linear-gradient(120deg, #f97316, #d946ef) border-box;
+            border-radius: 1rem;
+        }
+
+        .btn-cta {
+            background: linear-gradient(90deg, #f97316, #d946ef);
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.6), 0 0 35px rgba(217, 70, 239, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 0 30px rgba(249, 115, 22, 0.8), 0 0 50px rgba(217, 70, 239, 0.6);
+        }
+
+        /* Animación para la aparición del contenido */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Partículas de fondo -->
+    <div id="particles-js" class="fixed top-0 left-0 w-full h-full z-0"></div>
+
+    <div class="relative z-10">
+        <!-- SECCIÓN DE BIENVENIDA -->
+        <section class="hero-container">
+            <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+                Donde el <span class="gradient-text">Talento</span><br>se Transforma en Habilidad.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                Bienvenido a la nueva era del aprendizaje. Una plataforma diseñada para forjar las competencias del mañana.
+            </p>
+        </section>
+
+        <!-- SECCIÓN DE PILARES -->
+        <section class="py-20 px-6 container mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <!-- Pilar 1 -->
+                <div class="fade-in-up">
+                    <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-orange-400"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25a.75.75 0 01-.75-.75v-7.5a.75.75 0 01.75-.75h7.5a.75.75 0 01.75.75v7.5a.75.75 0 01-.75.75zM13.5 8.25h3.75a.75.75 0 01.75.75v3.75a.75.75 0 01-.75.75H13.5a.75.75 0 01-.75-.75V9a.75.75 0 01.75-.75zM6 8.25h3.75a.75.75 0 01.75.75v3.75a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V9a.75.75 0 01.75-.75z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Aprende Haciendo</h3>
+                    <p class="text-gray-400">Nuestros cursos son proyectos prácticos que simulan desafíos del mundo real.</p>
+                </div>
+                <!-- Pilar 2 -->
+                 <div class="fade-in-up">
+                    <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-purple-400"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Certificación Real</h3>
+                    <p class="text-gray-400">Valida tus nuevas habilidades con certificados verificables que tienen peso en la industria.</p>
+                </div>
+                <!-- Pilar 3 -->
+                 <div class="fade-in-up">
+                    <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-teal-400"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 3a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 9m18 3h-3.375a2.25 2.25 0 00-2.25 2.25V18m-1.5-12a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Crecimiento sin Costo</h3>
+                    <p class="text-gray-400">Creemos en el talento sin barreras. Accede a todas nuestras capacitaciones de forma gratuita.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN ESTUDIANTES -->
+        <section class="py-20 px-6">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center fade-in-up">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">FORJA TU <span class="gradient-text">FUTURO</span></h2>
+                    <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+                        Tu carrera profesional despega aquí. Te damos las herramientas para que construyas un perfil irresistible para el mercado laboral. Desbloquea tu potencial, domina nuevas tecnologías y obtén la confianza para alcanzar cualquier meta que te propongas.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Construye un portafolio con proyectos reales.</li>
+                        <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Aprende a tu propio ritmo, sin presiones.</li>
+                        <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Conéctate con una comunidad de futuros líderes.</li>
+                    </ul>
+                </div>
+                <div class="gradient-border-card p-4">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" class="rounded-lg w-full h-full object-cover" alt="Estudiantes colaborando">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN EMPRESAS -->
+        <section class="py-20 px-6 bg-white/5">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center fade-in-up">
+                <div class="order-2 md:order-1 gradient-border-card p-4">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2132&auto=format&fit=crop" class="rounded-lg w-full h-full object-cover" alt="Equipo de trabajo en oficina">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">IMPULSA A TU <span class="gradient-text">EQUIPO</span></h2>
+                    <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+                        La capacitación ya no es un costo, es la mejor inversión. Transforma a tu equipo en una fuerza de alto rendimiento con programas diseñados para impactar directamente en la productividad, la innovación y la retención del talento.
+                    </p>
+                     <ul class="space-y-4">
+                        <li class="flex items-center"><span class="text-purple-500 mr-3">✓</span> Mide el progreso con analíticas claras.</li>
+                        <li class="flex items-center"><span class="text-purple-500 mr-3">✓</span> Personaliza rutas de aprendizaje para cada rol.</li>
+                        <li class="flex items-center"><span class="text-purple-500 mr-3">✓</span> Fomenta una cultura de crecimiento continuo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECCIÓN CTA FINAL -->
+        <section class="py-24 text-center px-6 fade-in-up">
+             <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">¿Listo para empezar a construir?</h2>
+             <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+                Únete a la revolución del aprendizaje. Tu próximo gran proyecto profesional o el futuro de tu equipo está a un solo clic de distancia.
+            </p>
+            <button class="btn-cta text-white font-bold py-5 px-16 rounded-full text-2xl">
+                PRUÉBANOS
+            </button>
+        </section>
+
+    </div>
+
+    <!-- Script para partículas y animaciones de scroll -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lógica para animaciones de scroll
+            const scrollElements = document.querySelectorAll('.fade-in-up');
+            const elementInView = (el) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) - 100);
+            };
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+            
+            // Ejecutar al cargar y al hacer scroll
+            handleScrollAnimation();
+            window.addEventListener('scroll', handleScrollAnimation);
+            
+            // Nueva configuración de Particles.js para un efecto sutil
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 1000, "density": { "enable": true, "value_area": 300 } },
+                    "color": { "value": "#ffffff" },
+                    "shape": { "type": "star" },
+                    "opacity": { "value": 0.4, "random": true, "anim": { "enable": true, "speed": 0.001, "opacity_min": 0.1, "sync": false } },
+                    "size": { "value": 3, "random": true },
+                    "line_linked": { "enable": false },
+                    "move": {
+                        "enable": true,
+                        "speed": 0.3,
+                        "direction": "top",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
+                },
+                "retina_detect": true
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fábrica de Talentos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #aaa;
+      max-width: 700px;
+      margin: 15px auto;
+    }
+
+    .btn-prueba {
+      background: linear-gradient(90deg, #ff6600, #ff0080);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-prueba:hover {
+      transform: scale(1.08);
+    }
+
+    /* Wave separator */
+    .wave {
+      position: relative;
+      top: -5px;
+    }
+
+    .split-section {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 100px 20px;
+      background-color: #111;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 30px;
+      width: 40%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .student h2 {
+      color: #ff6600;
+    }
+
+    .empresa h2 {
+      color: #00aaff;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-estudiante {
+      background: linear-gradient(90deg, #ff6600, #ff0080);
+      color: white;
+    }
+
+    .btn-empresa {
+      background: linear-gradient(90deg, #00aaff, #6600ff);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Presentación -->
+  <header>
+    <h1>Formamos talento listo para el futuro.</h1>
+    <p>
+      En Fábrica de Talentos ofrecemos educación gratuita y de calidad para estudiantes, 
+      y soluciones de capacitación medibles y escalables para empresas. 
+      Aprende, prueba y crece con nosotros.
+    </p>
+    <a href="#seccion-split">
+      <button class="btn-prueba">Pruébanos</button>
+    </a>
+  </header>
+
+  <!-- Wave separador -->
+  <div class="wave">
+    <svg viewBox="0 0 1440 150" xmlns="http://www.w3.org/2000/svg">
+      <path fill="url(#grad)" fill-opacity="1" 
+        d="M0,64L48,58.7C96,53,192,43,288,58.7C384,75,480,117,576,144C672,171,768,181,864,176C960,171,1056,149,1152,133.3C1248,117,1344,107,1392,101.3L1440,96L1440,320L0,320Z">
+      </path>
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#ff6600;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#ff0080;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Split section -->
+  <section id="seccion-split" class="split-section">
+    <div class="card student">
+      <h2>Crecé como Profesional</h2>
+      <p>Aprenderás con rutas gamificadas, insignias y retos reales. Educación gratuita y accesible.</p>
+      <a href="#" class="btn btn-estudiante">Acceder como Estudiante</a>
+    </div>
+
+    <div class="card empresa">
+      <h2>Capacita y Retén Talento</h2>
+      <p>Planes empresariales con métricas, integraciones y soporte. Suscripción flexible según número de empleados.</p>
+      <a href="#" class="btn btn-empresa">Solicitar Demo</a>
+    </div>
+  </section>
+
+  <script>
+    // Animación de tarjetas al entrar en pantalla
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
+</body>
+</html>

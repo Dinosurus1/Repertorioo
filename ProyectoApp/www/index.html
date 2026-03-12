@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGlobal - Educación Personalizada por Edad</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .age-group-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        .course-card {
+            transition: all 0.3s ease;
+        }
+        .course-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #93d2fc 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #6bd2e4, #78d4eb);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, #5ecde0, #5dbbe7);
+        }
+        .mobile-menu {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header y Navegación -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <div class="bg-purple-600 text-white p-2 rounded-lg">
+                    <i class="fas fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">EduGlobal</h1>
+                    <p class="text-xs text-gray-500">Educación para toda la vida</p>
+                </div>
+            </div>
+            
+            <!-- parte de arriba -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#inicio" class="text-gray-700 hover:text-purple-600 font-medium">Inicio</a>
+                <a href="Cursos.html" class="text-gray-700 hover:text-purple-600 font-medium">Cursos</a>
+                <a href="#edades" class="text-gray-700 hover:text-purple-600 font-medium">Para tu edad</a>
+                <a href="Mensaje.html" class="text-gray-700 hover:text-purple-600 font-medium">Nosotros</a>
+                <a href="#contacto" class="text-gray-700 hover:text-purple-600 font-medium">Contacto</a>
+            </nav>
+            
+            <!-- Botones de acción -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="login.html" class="bg-white-400 text-purple-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 flex items-center">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Iniciar Sesión
+                </a>
+                <a href="registro.html" class="bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-yellow-300">
+                    Registrarse
+                </a>
+            
+            <!-- Menú en celular -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Menu celular desplegable si -->
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#inicio" class="text-gray-700 hover:text-purple-600 font-medium py-2">Inicio</a>
+                <a href="#cursos" class="text-gray-700 hover:text-purple-600 font-medium py-2">Cursos</a>
+                <a href="#edades" class="text-gray-700 hover:text-purple-600 font-medium py-2">Para tu edad</a>
+                <a href="Mensaje.html" class="text-gray-700 hover:text-purple-600 font-medium py-2">Nosotros</a>
+                <a href="#contacto" class="text-gray-700 hover:text-purple-600 font-medium py-2">Contacto</a>
+                <div class="pt-4 flex flex-col space-y-3">
+                    <button class="w-full py-2 text-purple-600 font-medium border border-purple-600 rounded-lg hover:bg-purple-50">Iniciar Sesión</button>
+                    <button class="w-full py-2 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Hero / Inicio -->
+    <section id="inicio" class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Revolucionando la Educación Digital con Personalización Etaria</h1>
+                    <p class="text-xl mb-8 opacity-90">EduGlobal adapta automáticamente la experiencia educativa a la edad del usuario, ofreciendo aprendizaje personalizado desde los 4 hasta los 80+ años.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="Cursos.html" class="px-6 py-3 bg-white text-purple-700 font-bold rounded-lg hover:bg-gray-100 transition duration-300">Explorar Cursos</a>
+                        <a href='Mensaje.html'class="px-6 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-purple-700 transition duration-300">Ver Demo</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md">
+                        <div class="text-purple-700 text-center mb-4">
+                            <i class="fas fa-brain text-6xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Sistema Inteligente por Edad</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">6 grupos etarios con experiencias completamente personalizadas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Contenido pedagógicamente optimizado para cada etapa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Interfaces adaptadas a habilidades cognitivas y técnicas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Grupos Etarios -->
+    <section id="edades" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Experiencias Educativas por Edad</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Cada grupo etario tiene una experiencia diseñada específicamente para sus necesidades, intereses y capacidades técnicas.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Grupo 4-7 años -->
+                <div class="age-group-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-pink-100 text-pink-600 p-3 rounded-lg mr-4">
+                            <i class="fas fa-child text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">4-7 años</h3>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Mundo Mágico</h4>
+                    <p class="text-gray-600 mb-4">Aprendizaje lúdico con personajes guía, colores pastel y actividades sensoriomotoras.</p>
+                    <div class="text-sm text-gray-500">
+                        <span class="font-medium">Enfoque:</span> Estimulación cognitiva temprana
+                    </div>
+                </div>
+                
+                <!-- Grupo 8-12 años -->
+                <div class="age-group-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 text-blue-600 p-3 rounded-lg mr-4">
+                            <i class="fas fa-compass text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">8-12 años</h3>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Isla de los Descubridores</h4>
+                    <p class="text-gray-600 mb-4">Aventuras educativas gamificadas, expediciones científicas y pensamiento crítico.</p>
+                    <div class="text-sm text-gray-500">
+                        <span class="font-medium">Enfoque:</span> Construcción de bases académicas sólidas
+                    </div>
+                </div>
+                
+                <!-- Grupo 13-17 años -->
+                <div class="age-group-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 text-green-600 p-3 rounded-lg mr-4">
+                            <i class="fas fa-university text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">13-17 años</h3>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Torre del Conocimiento</h4>
+                    <p class="text-gray-600 mb-4">Preparación universitaria y vocacional, proyectos reales y orientación profesional.</p>
+                    <div class="text-sm text-gray-500">
+                        <span class="font-medium">Enfoque:</span> Descubrimiento vocacional
+                    </div>
+                </div>
+                
+                <!-- Grupo 18-25 años -->
+                <div class="age-group-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 text-purple-600 p-3 rounded-lg mr-4">
+                            <i class="fas fa-briefcase text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">18-25 años</h3>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Plaza Profesional</h4>
+                    <p class="text-gray-600 mb-4">Desarrollo profesional, empleabilidad, certificaciones y conexión con el mercado laboral.</p>
+                    <div class="text-sm text-gray-500">
+                        <span class="font-medium">Enfoque:</span> Transición al mercado laboral
+                    </div>
+                </div>
+                
+                <!-- Grupo 26-50 años -->
+                <div class="age-group-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 text-yellow-600 p-3 rounded-lg mr-4">
+                            <i class="fas fa-chart-line text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">26-50 años</h3>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Cumbre Ejecutiva</h4>
+                    <p class="text-gray-600 mb-4">Actualización profesional, liderazgo, inteligencia emocional y desarrollo directivo.</p>
+                    <div class="text-sm text-gray-500">
+                        <span class="font-medium">Enfoque:</span> Actualización y crecimiento continuo
+                    </div>
+                </div>
+                
+                <!-- Grupo 51+ años -->
+                <div class="age-group-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 text-red-600 p-3 rounded-lg mr-4">
+                            <i class="fas fa-heart text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">51+ años</h3>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">Jardín de la Sabiduría</h4>
+                    <p class="text-gray-600 mb-4">Aprendizaje continuo, envejecimiento activo, legado y aprendizaje social.</p>
+                    <div class="text-sm text-gray-500">
+                        <span class="font-medium">Enfoque:</span> Aprendizaje social y envejecimiento activo
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Cursos -->
+    
+            <!-- Banner para más cursos -->
+            <div class="mt-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl p-8 text-center text-white">
+    <h3 class="text-2xl md:text-3xl font-bold mb-4">¿Buscas más cursos?</h3>
+    <p class="text-lg mb-6 max-w-2xl mx-auto">Tenemos más de 100 cursos especializados por edad, industria y nivel de habilidad. Todos gratuitos para usuarios individuales.</p>
+    
+    <a href="Cursos.html" class="inline-block px-8 py-3 bg-white text-purple-700 font-bold rounded-lg hover:bg-gray-100 transition duration-300">
+        Explorar Catálogo Completo
+    </a>
+    
+</div>
+    </section>
+
+    <!-- Sección de Responsive Design -->
+    
+    <!-- Footer -->
+    <footer id="contacto" class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="bg-purple-600 text-white p-2 rounded-lg mr-3">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">EduGlobal</h2>
+                    </div>
+                    <p class="text-gray-400 mb-6">Plataforma educativa que se adapta automáticamente a la edad del usuario, ofreciendo experiencias de aprendizaje personalizadas.</p>
+                    
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Enlaces Rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-white transition duration-300">Inicio</a></li>
+                        <li><a href="Cursos.html" class="text-gray-400 hover:text-white transition duration-300">Cursos</a></li>
+                        <li><a href="#edades" class="text-gray-400 hover:text-white transition duration-300">Para tu edad</a></li>
+                        <li><a href="Mensaje.html" class="text-gray-400 hover:text-white transition duration-300">Para Empresas</a></li>
+                        <li><a href="Mensaje.html" class="text-gray-400 hover:text-white transition duration-300">Para Educadores</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Recursos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="Mensaje.html" class="text-gray-400 hover:text-white transition duration-300">Blog Educativo</a></li>
+                        <li><a href="Mensaje.html" class="text-gray-400 hover:text-white transition duration-300">Centro de Ayuda</a></li>
+                        <li><a href="Mensaje.html" class="text-gray-400 hover:text-white transition duration-300">Preguntas Frecuentes</a></li>
+                        <li><a href="Mensaje.html" class="text-gray-400 hover:text-white transition duration-300">Política de Privacidad</a></li>
+                        <li><a href="Mensaje.html" class="text-gray-400 hover:text-white transition duration-300">Términos de Uso</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Contacto</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-purple-400"></i>
+                            <span class="text-gray-400">Todavia no hay correo xd</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-globe mt-1 mr-3 text-purple-400"></i>
+                            <span class="text-gray-400">Tampoco hay</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-purple-400"></i>
+                            <span class="text-gray-400">No hay xd</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500">
+                <p></p>
+                <p class="mt-2 text-sm">"En EduGlobal, no creemos en la educación para todos—creemos en la educación para cada uno."</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript para interactividad -->
+    <script>
+        // Menú móvil
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Cerrar menú móvil al hacer clic en un enlace
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+        
+        // Scroll suave para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+       
+        
+        
+        // Efecto de aparición al hacer scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos para animación
+        document.querySelectorAll('.age-group-card, .course-card').forEach(card => {
+            card.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

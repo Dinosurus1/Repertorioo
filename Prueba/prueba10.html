@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Bienestar Laboral - Elige tu Rol</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* Evita el scroll en la vista principal */
+        }
+        
+        .split-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            background-color: #020617;
+        }
+
+        .split-half {
+            width: 50%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            transition: width 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .split-container:hover .split-half {
+            width: 40%;
+        }
+
+        .split-container .split-half:hover {
+            width: 60%;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0.1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .split-half:hover .video-bg {
+            opacity: 0.2;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        
+        .split-half:hover .content {
+            transform: scale(1.05);
+        }
+
+        .split-half .hidden-content {
+            opacity: 0;
+            max-height: 0;
+            transition: opacity 0.5s ease, max-height 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .split-half:hover .hidden-content {
+            opacity: 1;
+            max-height: 200px; /* Ajustar si es necesario */
+        }
+
+        /* Estilos Colaboradores */
+        #employee-side {
+            background: radial-gradient(circle at center, rgba(45, 212, 191, 0.15), transparent 70%);
+        }
+        #employee-side .btn {
+            background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.5), 0 0 25px rgba(56, 189, 248, 0.3);
+        }
+         #employee-side .btn:hover {
+            box-shadow: 0 0 25px rgba(45, 212, 191, 0.8), 0 0 40px rgba(56, 189, 248, 0.6);
+         }
+
+        /* Estilos Empresas */
+        #company-side {
+            background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15), transparent 70%);
+        }
+        #company-side .btn {
+            background-color: #e2e8f0;
+            color: #1e293b;
+            box-shadow: 0 0 15px rgba(226, 232, 240, 0.3);
+        }
+        #company-side .btn:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 25px rgba(226, 232, 240, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Partículas de fondo sutiles -->
+    <div id="particles-js" class="fixed top-0 left-0 w-full h-full z-0"></div>
+
+    <main class="relative z-10">
+        <div class="split-container">
+            <!-- MITAD COLABORADORES -->
+            <div id="employee-side" class="split-half">
+                <video autoplay loop muted class="video-bg" poster="https://placehold.co/1920x1080/020617/ffffff?text=Cargando...">
+                    <!-- Video de Pexels -->
+                    <source src="https://videos.pexels.com/video-files/5944243/5944243-hd_1920_1080_25fps.mp4" type="video/mp4">
+                </video>
+                <div class="content">
+                    <h2 class="text-4xl md:text-5xl font-black mb-4">PARA COLABORADORES</h2>
+                    <div class="hidden-content">
+                        <p class="text-lg text-gray-300 mb-8 max-w-md mx-auto">
+                            Cuida tu carrera, protege tu futuro. Domina las normativas de seguridad y certifícate para ser un pilar en tu equipo.
+                        </p>
+                    </div>
+                    <button class="btn text-white font-bold py-3 px-10 rounded-full text-lg transition-transform transform hover:scale-105">
+                        Acceso Personal
+                    </button>
+                </div>
+            </div>
+
+            <!-- MITAD EMPRESAS -->
+            <div id="company-side" class="split-half">
+                 <video autoplay loop muted class="video-bg" poster="https://placehold.co/1920x1080/020617/ffffff?text=Cargando...">
+                    <!-- Video de Pexels -->
+                    <source src="https://videos.pexels.com/video-files/3253733/3253733-hd_1920_1080_24fps.mp4" type="video/mp4">
+                </video>
+                <div class="content">
+                    <h2 class="text-4xl md:text-5xl font-black mb-4">PARA EMPRESAS</h2>
+                    <div class="hidden-content">
+                        <p class="text-lg text-gray-300 mb-8 max-w-md mx-auto">
+                           Construye un entorno seguro y productivo. Capacita a tu equipo, cumple con las normativas y fomenta una cultura de bienestar.
+                        </p>
+                    </div>
+                    <button class="btn font-bold py-3 px-10 rounded-full text-lg transition-transform transform hover:scale-105">
+                        Acceso Empresas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Script para partículas -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuración sutil de Particles.js
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#ffffff" },
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.4, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                    "size": { "value": 2, "random": true },
+                    "line_linked": { "enable": false },
+                    "move": {
+                        "enable": true, "speed": 0.5, "direction": "top", "random": true,
+                        "straight": false, "out_mode": "out", "bounce": false
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas", "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
+                },
+                "retina_detect": true
+            });
+        });
+    </script>
+
+</body>
+</html>

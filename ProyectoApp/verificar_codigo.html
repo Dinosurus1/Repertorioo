@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificar código</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        input {
+            padding: 5px;
+            width: 100%;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Verifica tu código</h2>
+        <p>Ingresa el código de 6 dígitos que enviamos a tu correo electrónico.</p>
+
+        <!-- Mostrar mensajes flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                {% for category, message in messages %}
+                    <li class="{{ 'error' if category == 'error' else 'success' }}">
+                        {{ message }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('verificar_codigo') }}">
+            <label for="codigo">Código:</label><br>
+            <input type="text" id="codigo" name="codigo" maxlength="6" pattern="[0-9]{6}" required>
+            <br>
+            <button type="submit">Verificar</button>
+        </form>
+
+        <p>
+            <a href="{{ url_for('registro') }}">Volver al registro</a>
+        </p>
+    </div>
+</body>
+</html>

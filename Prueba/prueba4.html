@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FábricaDeTalentos — Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --muted:#9aa3ad;
+      --glass: rgba(255,255,255,0.04);
+      --accent-student: linear-gradient(90deg,#ff6a00,#ff2fa8);
+      --accent-company: linear-gradient(90deg,#1f8ef1,#6b5cff);
+      --card-radius:18px;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:#ececec}
+    body{display:flex;align-items:center;justify-content:center}
+
+    /* container */
+    .wrap{width:100%;max-width:1400px;margin:24px;padding:28px}
+    .hero{height:78vh;border-radius:14px;overflow:hidden;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:28px}
+
+    /* particle canvas sits behind */
+    canvas#particles{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.25}
+
+    /* split sides */
+    .side{position:relative;padding:36px;border-radius:12px;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px}
+    .left{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03)}
+    .right{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03)}
+
+    /* headline */
+    .eyebrow{font-size:13px;color:var(--muted);letter-spacing:1px}
+    h1{font-size:44px;margin:0;line-height:1.02;letter-spacing:-1px}
+    h1 .accent-stu{background:var(--accent-student);-webkit-background-clip:text;background-clip:text;color:transparent}
+    h1 .accent-co{background:var(--accent-company);-webkit-background-clip:text;background-clip:text;color:transparent}
+    p.lead{color:var(--muted);max-width:64ch;text-align:center;margin:0}
+
+    /* CTAs */
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{padding:12px 20px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
+    .btn-cta{background:var(--accent-student);color:#fff;box-shadow:0 6px 24px rgba(255,50,110,0.08);transform:translateY(0);transition:transform .18s ease,box-shadow .18s}
+    .btn-cta:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(255,50,110,0.12)}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 18px}
+
+    /* student area */
+    .student-card{width:100%;max-width:520px;padding:28px;border-radius:var(--card-radius);background:linear-gradient(180deg,rgba(255,255,255,0.015),transparent);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:18px}
+    .badge{width:64px;height:64px;border-radius:12px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:800}
+    .progress-wrap{width:100%;background:rgba(255,255,255,0.03);height:12px;border-radius:999px;overflow:hidden}
+    .progress{height:100%;width:38%;border-radius:999px;background:linear-gradient(90deg,#ffd66b,#ff6a00)}
+    .badges-row{display:flex;gap:8px}
+
+    /* company area */
+    .company-card{width:100%;max-width:520px;padding:28px;border-radius:var(--card-radius);background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:18px;align-items:stretch}
+    .metric-row{display:flex;gap:12px}
+    .metric{flex:1;padding:14px;border-radius:12px;background:rgba(255,255,255,0.02);text-align:center}
+
+    /* hover microinteractions */
+    .feature{padding:18px;border-radius:12px;background:rgba(255,255,255,0.01);transition:transform .18s,box-shadow .18s}
+    .feature:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;align-items:stretch;height:auto}
+      canvas#particles{opacity:.14}
+      h1{font-size:32px}
+    }
+
+    /* small flourishes */
+    .logo{position:absolute;top:18px;left:20px;font-weight:900;color:#ff7a24}
+    .top-right{position:absolute;top:18px;right:18px;display:flex;gap:12px}
+    .pill{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo">FábricaDeTalentos</div>
+    <div class="top-right"><div class="pill">Acceso Estudiantes</div><div class="pill">Acceso Empresas</div></div>
+
+    <section class="hero" aria-label="Inicio — Estudiantes y Empresas">
+      <canvas id="particles"></canvas>
+
+      <!-- LEFT: Students -->
+      <div class="side left" aria-labelledby="h-student">
+        <div class="student-card">
+          <div class="eyebrow">Para estudiantes</div>
+          <h1 id="h-student">Crecé como <span class="accent-stu">Profesional</span></h1>
+          <p class="lead">Aprenderás con rutas gamificadas, insignias y retos reales. Educación gratuita y accesible.</p>
+
+          <div class="badges-row">
+            <div class="badge">⚡</div>
+            <div class="badge">🎖️</div>
+            <div class="badge">🧪</div>
+          </div>
+
+          <div class="progress-wrap" aria-hidden="true"><div class="progress" id="progress"></div></div>
+
+          <div class="cta-row">
+            <button class="btn btn-cta" id="join-stu">Acceder como Estudiante</button>
+            <button class="btn btn-outline" id="explore-stu">Explorar Cursos</button>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+          <div class="feature">Rutas por habilidad</div>
+          <div class="feature">Retos semanales</div>
+          <div class="feature">Mentoría peer-to-peer</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Companies -->
+      <div class="side right" aria-labelledby="h-company">
+        <div class="company-card">
+          <div class="eyebrow">Para empresas</div>
+          <h1 id="h-company">Capacita y <span class="accent-co">Retén Talento</span></h1>
+          <p class="lead">Planes empresariales con métricas, integraciones y soporte. Suscripción flexible según número de empleados.</p>
+
+          <div class="metric-row">
+            <div class="metric">
+              <div style="font-weight:800;font-size:20px">82%</div>
+              <div style="font-size:13px;color:var(--muted)">Retención promedio</div>
+            </div>
+            <div class="metric">
+              <div style="font-weight:800;font-size:20px">+45%</div>
+              <div style="font-size:13px;color:var(--muted)">Productividad</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn" id="contact-co" style="background:var(--accent-company);color:#fff">Solicitar Demo</button>
+            <button class="btn btn-outline">Planes y Precios</button>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px;flex-direction:column;width:100%;max-width:520px">
+          <div class="feature">Integración con HR</div>
+          <div class="feature">Reportes exportables</div>
+          <div class="feature">Soporte prioritario</div>
+        </div>
+      </div>
+
+    </section>
+
+    <footer style="text-align:center;margin-top:22px;color:var(--muted)">© 2025 Fábrica de Talentos — Mockup</footer>
+  </div>
+
+  <script>
+    // Simple particle background
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = canvas.clientWidth;
+    let H = canvas.height = canvas.clientHeight;
+
+    window.addEventListener('resize', ()=>{W = canvas.width = canvas.clientWidth; H = canvas.height = canvas.clientHeight;});
+
+    const opts = {count: 80, size:1.6, speed:0.35};
+    const particles = [];
+    class P{constructor(){this.reset()} reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-0.5)*opts.speed;this.vy=(Math.random()-0.5)*opts.speed;this.r=(Math.random()*opts.size)+.2}};
+    for(let i=0;i<opts.count;i++)particles.push(new P());
+
+    function draw(){ctx.clearRect(0,0,W,H);
+      // dots
+      for(let p of particles){p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>W||p.y<0||p.y>H) p.reset(); ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(255,255,255,0.06)'; ctx.fill();}
+      // connect
+      for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){let a=particles[i],b=particles[j];let d=(a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y); if(d<14000){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(255,255,255,'+(0.02)+')';ctx.lineWidth=1;ctx.stroke();}}
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    // small interaction: progress increases on click
+    const progress = document.getElementById('progress');
+    const join = document.getElementById('join-stu');
+    join.addEventListener('click', ()=>{
+      let w = parseFloat(progress.style.width)||38;
+      w = Math.min(100,w+12);
+      progress.style.width = w+"%";
+      join.animate([{transform:'scale(1)'},{transform:'scale(1.04)'},{transform:'scale(1)'}],{duration:320});
+    });
+
+    // microinteractions on features
+    document.querySelectorAll('.feature').forEach(el=>{el.addEventListener('mouseenter', ()=>{el.style.transform='translateY(-6px) scale(1.01)'; el.style.boxShadow='0 20px 48px rgba(0,0,0,0.6)';}); el.addEventListener('mouseleave', ()=>{el.style.transform=''; el.style.boxShadow='';});});
+
+    // accessible keyboard CTA
+    document.querySelectorAll('.btn').forEach(b=>{b.addEventListener('keydown', e=>{if(e.key==='Enter') b.click();})});
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fábrica de Talentos - Bienvenido</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de colores y estilos futuristas */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f07070; /* Azul noche muy oscuro */
+            color: #e0e0e0;
+        }
+        .main-container {
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 0),
+                radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+            background-size: 50px 50px;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(249, 115, 22, 0.5), 0 0 20px rgba(249, 115, 22, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #f97316, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-glow {
+            box-shadow: 0 0 10px rgba(249, 115, 22, 0.4), 0 0 20px rgba(249, 115, 22, 0.2);
+        }
+        /* Estilos para las tarjetas interactivas */
+        .info-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .info-card .content {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .info-card .hover-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            background: rgba(13, 13, 26, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        .info-card:hover {
+            border-color: rgba(249, 115, 22, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .info-card:hover .content {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        .info-card:hover .hover-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div class="main-container">
+        <!-- Header -->
+        <header class="sticky top-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/10">
+            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#" class="text-2xl font-black tracking-wider gradient-text">FábricaDeTalentos</a>
+                <div class="flex items-center space-x-3">
+                    <button class="text-sm font-semibold bg-white/10 hover:bg-white/20 px-5 py-2 rounded-full transition duration-300">Acceso Estudiantes</button>
+                    <button class="text-sm font-semibold text-white bg-orange-500 hover:bg-orange-600 btn-glow px-5 py-2 rounded-full transition duration-300">Acceso Empresas</button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="container mx-auto px-6 pt-24 pb-32 text-center">
+            <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+                El Futuro del <span class="gradient-text">Talento</span><br>se Construye Hoy.
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-10">
+                Una plataforma de capacitación inmersiva diseñada para forjar las habilidades que definen el mañana.
+            </p>
+        </main>
+
+        <!-- Secciones Interactivas -->
+        <section class="container mx-auto px-6 pb-24">
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Card: Quiénes Somos -->
+                <div class="info-card rounded-2xl p-8 md:p-12">
+                    <div class="content text-center">
+                        <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-orange-400">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25a.75.75 0 01-.75-.75v-7.5a.75.75 0 01.75-.75h7.5a.75.75 0 01.75.75v7.5a.75.75 0 01-.75.75zM13.5 8.25h3.75a.75.75 0 01.75.75v3.75a.75.75 0 01-.75.75H13.5a.75.75 0 01-.75-.75V9a.75.75 0 01.75-.75zM6 8.25h3.75a.75.75 0 01.75.75v3.75a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V9a.75.75 0 01.75-.75z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-2">Quiénes Somos</h2>
+                        <p class="text-gray-400">Pasa el cursor para descubrir nuestra esencia.</p>
+                    </div>
+                    <div class="hover-content flex flex-col justify-center items-center text-center p-8">
+                        <h3 class="text-2xl font-bold mb-4">Arquitectos del Conocimiento</h3>
+                        <p class="text-gray-300">
+                            Somos un taller de habilidades, no una biblioteca de cursos. Forjamos el talento a través de proyectos prácticos y desafíos reales, preparando a individuos y equipos para un futuro que exige más que teoría.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card: Nuestra Misión -->
+                <div class="info-card rounded-2xl p-8 md:p-12">
+                     <div class="content text-center">
+                        <div class="mb-4 inline-block p-4 bg-white/10 rounded-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-purple-400">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-2">Nuestra Misión</h2>
+                        <p class="text-gray-400">Pasa el cursor para conocer nuestro propósito.</p>
+                    </div>
+                     <div class="hover-content flex flex-col justify-center items-center text-center p-8">
+                        <h3 class="text-2xl font-bold mb-4">Democratizar el Crecimiento</h3>
+                        <p class="text-gray-300">
+                           Creemos que el potencial no tiene barreras. Nuestra misión es ofrecer acceso universal y gratuito a capacitaciones de alto impacto, empoderando tanto a futuros profesionales como a empresas visionarias para que construyan su propio éxito.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="border-t border-white/10 mt-20">
+            <div class="container mx-auto px-6 py-6 text-center text-sm text-gray-500">
+                &copy; 2025 Fábrica de Talentos. Forjando el futuro.
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
